@@ -24,10 +24,26 @@ const addNewGoal = () => {
     
     // ⚠️ Hint 1: Check for duplicates
     // Use 'goalList' to get all existing goals and check if 'goalInput' matches any of them.
+
+    /* values variable is created to stored the newGoal values added to the list which is the
+    child element of goalList*/
+    let values = goalList.children
+
+    /* for loop is created to get the text of each goal(list) */
+    for (let goal = 0; goal < values.length; goal ++) {
+
+        /* if statement to check if any of the text in the list matches the user input(goalInput) */
+        if (values[goal].textContent === goalInput) {
+            // ⚠️ Hint 2: Prevent duplicates
+            // If a duplicate is found, display an alert to the user and don't add the goal to the list.
+            // If it's not a duplicate, proceed with adding it as a new goal.
+
+            /* if so, an alert is prompted */
+            alert('Goal Already Exists ⚠️')
+            return; /* stops the function */
+        }
+    }
     
-    // ⚠️ Hint 2: Prevent duplicates
-    // If a duplicate is found, display an alert to the user and don't add the goal to the list.
-    // If it's not a duplicate, proceed with adding it as a new goal.
     
     // ⚠️ Hint 3: Code structure
     // You might want to wrap the duplicate-checking logic in an 'if' statement.
@@ -35,7 +51,6 @@ const addNewGoal = () => {
     // ⚠️ Hint 4: Event listener
     // The event listener that removes goals when clicked is not related to this issue.
     // Focus on preventing duplicates for now.
-    
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
